@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">API</string>
+    <string name="titulo">Museu ABC</string>
+    <string name="subtitulo">Fazer oq ne</string>
+    <string name="artistas">Artistas</string>
+    <string name="exposicao">Exposição</string>
+
+    <string name="nomeart">Nome:</string>
+    <string name="genero">Genero:</string>
+    <string name="localNasc">Local de Nascimento:</string>
+    <string name="localMorte">Local da Morte:</string>
+    <string name="AnoNascimento">Ano de Nascimento:</string>
+    <string name="cultura">Cultura:</string>
+    <string name="desc">https://harvardartmuseums.org/</string>
+</resources>
