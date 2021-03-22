@@ -33,26 +33,21 @@
         android:layout_height="2dp"
         android:background="?android:attr/listDivider" />
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-         <TextView
-        android:id="@+id/text_view_result"
+    <EditText
+        android:id="@+id/pag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:textColor="@color/cardview_light_background"/>
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginLeft="20dp"
+        android:hint="@string/pagina"
+        android:textColorHint="@color/cardview_light_background" />
 
-        </LinearLayout>
-    </ScrollView>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
 
     <Button
         android:id="@+id/button_parse"
@@ -62,7 +57,7 @@
         android:textColorHint="@color/white"
         android:layout_marginRight="40dp"
         android:onClick="vai"
-        android:text="parse"
+        android:hint="@string/Pesquisar"
         app:backgroundTint="@android:color/holo_orange_light" />
 
     <Button
@@ -72,8 +67,30 @@
         android:textSize="20sp"
         android:textColorHint="@color/white"
         android:onClick="list"
-        android:text="cont"
+        android:hint="@string/banco"
         app:backgroundTint="@android:color/holo_orange_light" />
 
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textColor="@color/cardview_light_background"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

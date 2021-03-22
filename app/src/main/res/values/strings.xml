@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">API</string>
     <string name="titulo">Museu ABC</string>
-    <string name="subtitulo">Fazer oq ne</string>
+    <string name="subtitulo">Museu contoso</string>
+
+    <string name="Pesquisar">Pesquisar</string>
+    <string name="banco">Vizualizar</string>
+    <string name="pagina">Escolha a página:</string>
+
     <string name="artistas">Artistas</string>
     <string name="exposicao">Exposição</string>
 

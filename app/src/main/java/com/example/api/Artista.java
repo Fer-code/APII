@@ -32,9 +32,9 @@ import org.json.JSONObject;
 public class Artista extends AppCompatActivity{
 
     private TextView mTextViewResult;
-    private TextView mTextViewDisplayname;
-    private EditText NomeEdit;
     private RequestQueue mQueue;
+    private EditText cont;
+    int contador;
 
     DBHelper db = new DBHelper(this);
 
@@ -47,8 +47,10 @@ public class Artista extends AppCompatActivity{
         getSupportActionBar().hide();
 
         mTextViewResult = findViewById(R.id.text_view_result);
+        cont = findViewById(R.id.pag);
 
         mQueue = Volley.newRequestQueue(this);
+
 
     }
 
@@ -61,47 +63,57 @@ public class Artista extends AppCompatActivity{
         jsonParse();
     }
 
-    private void jsonParse(){
+    private void jsonParse() {
 
+        contador = Integer.parseInt(cont.getText().toString());
 
-        String url = "https://api.harvardartmuseums.org/Person?apikey=d66a16d0-0943-4495-a75d-7eca183f2c4f";
+        if (contador < 10) {
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray jsonArray = response.getJSONArray("records");
+            String url = "https://api.harvardartmuseums.org/Person?apikey=d66a16d0-0943-4495-a75d-7eca183f2c4f&page=" + contador;
 
-                            for(int i = 0; i < 10; i++ ){
-                                JSONObject artist = jsonArray.getJSONObject(i);
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                JSONArray jsonArray = response.getJSONArray("records");
 
-                                String alphasort = artist.getString("alphasort");
-                                String displayname = artist.getString("displayname");
-                                String birthplace = artist.getString("birthplace");
-                                String culture = artist.getString("culture");
-                                String datebegin = artist.getString("datebegin");
-                                String gender = artist.getString("gender");
-                                String deathplace = artist.getString("deathplace");
+                                for (int i = 0; i < 10; i++) {
+                                    JSONObject artist = jsonArray.getJSONObject(i);
 
-                                mTextViewResult.append(alphasort + "\n");
+                                    String alphasort = artist.getString("alphasort");
+                                    String displayname = artist.getString("displayname");
+                                    String birthplace = artist.getString("birthplace");
+                                    String culture = artist.getString("culture");
+                                    String datebegin = artist.getString("datebegin");
+                                    String gender = artist.getString("gender");
+                                    String deathplace = artist.getString("deathplace");
 
-                                try {
-                                    db.addArtista(new ArtClass(alphasort, displayname, gender, birthplace, datebegin, deathplace, culture));
-                                }catch (Exception e){ Toast.makeText(Artista.this, "Botão Parse não disponível", Toast.LENGTH_SHORT).show();}
+                                    mTextViewResult.append(alphasort + "\n");
+
+                                    try {
+                                        db.addArtista(new ArtClass(alphasort, displayname, gender, birthplace, datebegin, deathplace, culture));
+                                    } catch (Exception e) {
+
+                                    }
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-                mQueue.add(request);
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            mQueue.add(request);
+        }else{
+            Toast.makeText(Artista.this, "Página não dispónivel", Toast.LENGTH_SHORT).show();
+            cont.setText("");
+            mTextViewResult.setText("");
+        }
     }
 }
