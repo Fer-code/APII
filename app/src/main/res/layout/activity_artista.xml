@@ -37,10 +37,11 @@
         android:id="@+id/pag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:layout_marginLeft="20dp"
+        android:ems="10"
         android:hint="@string/pagina"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
         android:textColorHint="@color/cardview_light_background" />
 
     <LinearLayout

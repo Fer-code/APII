@@ -1,19 +1,10 @@
 package com.example.api;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -111,7 +102,7 @@ public class Artista extends AppCompatActivity{
             });
             mQueue.add(request);
         }else{
-            Toast.makeText(Artista.this, "Página não dispónivel", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Artista.this, "Página não disponível", Toast.LENGTH_SHORT).show();
             cont.setText("");
             mTextViewResult.setText("");
         }

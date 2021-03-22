@@ -32,4 +32,64 @@
         android:layout_height="2dp"
         android:background="?android:attr/listDivider" />
 
+    <EditText
+        android:id="@+id/pag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/pagina"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_parse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:hint="@string/Pesquisar"
+            android:onClick="vai"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            app:backgroundTint="@android:color/holo_orange_light" />
+
+        <Button
+            android:id="@+id/button_cont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/banco"
+            android:onClick="list"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            app:backgroundTint="@android:color/holo_orange_light" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:padding="10dp"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
