@@ -71,10 +71,10 @@ public class Exposicao extends AppCompatActivity {
                                     String description = exposicao.getString("description");
                                     String temporalorder = exposicao.getString("temporalorder");
 
-                                    txtViewResult.append((title + "\n"));
+                                    txtViewResult.append(title + "\n");
 
                                     try{
-                                        db.addExpo (new ExpoClass(title, begindate, enddate, description, temporalorder));
+                                        db.addExpo(new ExpoClass(title, begindate, enddate, description, temporalorder));
                                     } catch (Exception e){
 
                                     }

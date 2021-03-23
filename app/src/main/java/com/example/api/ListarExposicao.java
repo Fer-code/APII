@@ -33,7 +33,7 @@ public class ListarExposicao extends AppCompatActivity {
         listViewExp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                ExpoClass expoClass = new ExpoClass();
+                ExpoClass ec = new ExpoClass();
 
                 int id_To_Search = exp.get(position).CodExpo;
 
@@ -57,8 +57,8 @@ public class ListarExposicao extends AppCompatActivity {
 
         listViewExp.setAdapter(adapter);
 
-        for(ExpoClass expoClass : exp){
-            arrayList.add(expoClass.getTitleExpo());
+        for(ExpoClass ec : exp){
+            arrayList.add(ec.getTitleExpo());
             adapter.notifyDataSetChanged();
         }
     }
