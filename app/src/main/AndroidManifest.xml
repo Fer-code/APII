@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.API">
-        <activity android:name=".ListarExposicao"></activity>
+        <activity android:name=".DadosExp"></activity>
+        <activity android:name=".ListarExposicao" />
         <activity android:name=".DadosArt" />
         <activity android:name=".ListarArtista" />
         <activity android:name=".Artista" />

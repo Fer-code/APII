@@ -11,6 +11,7 @@ public class DadosArt extends AppCompatActivity {
 
     TextView nomeArt, nomeArtArt, genero, localNasc, localMorte, anoNasc, culture;
     int id_To_Update = 0;
+
     ArtClass artClass;
     DBHelper db = new DBHelper(this);
 

@@ -35,16 +35,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/nomeArt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@color/cardview_light_background"
-        android:layout_marginLeft="10dp"
-        android:textSize="30sp" />
+            <TextView
+                android:id="@+id/nomeArt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textview1"
@@ -58,15 +59,16 @@
         android:textSize="21sp" />
 
 
-    <TextView
-        android:id="@+id/nomeartart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:textColorHint="@color/cardview_light_background"
-        android:textSize="21sp" />
+            <TextView
+                android:id="@+id/nomeartart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="21sp" />
 
     <TextView
         android:id="@+id/textview2"
@@ -79,15 +81,16 @@
         android:textColorHint="@color/cardview_light_background"
         android:textSize="21sp" />
 
-    <TextView
-        android:id="@+id/genero"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:textColorHint="@color/cardview_light_background"
-        android:textSize="21sp"/>
+            <TextView
+                android:id="@+id/genero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="21sp" />
 
     <TextView
         android:id="@+id/textview3"
@@ -101,15 +104,16 @@
         android:textSize="21sp" />
 
 
-    <TextView
-        android:id="@+id/localNasc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:textColorHint="@color/cardview_light_background"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:textSize="21sp" />
+            <TextView
+                android:id="@+id/localNasc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="21sp" />
 
     <TextView
         android:id="@+id/textview4"
@@ -123,15 +127,16 @@
         android:textSize="21sp" />
 
 
-    <TextView
-        android:id="@+id/localMorte"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:textColorHint="@color/cardview_light_background"
-        android:textSize="21sp" />
+            <TextView
+                android:id="@+id/localMorte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="21sp" />
 
     <TextView
         android:id="@+id/textview5"
@@ -145,15 +150,16 @@
         android:textSize="21sp" />
 
 
-    <TextView
-        android:id="@+id/anoNasc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@color/cardview_light_background"
-        android:layout_marginLeft="10dp"
-        android:textSize="21sp" />
+            <TextView
+                android:id="@+id/anoNasc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="21sp" />
 
     <TextView
         android:id="@+id/textview6"
@@ -167,15 +173,16 @@
         android:textSize="21sp" />
 
 
-    <TextView
-        android:id="@+id/cultura"
-        android:layout_width="match_parent"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:textColorHint="@color/cardview_light_background"
-        android:layout_height="wrap_content"
-        android:textSize="21sp" />
+            <TextView
+                android:id="@+id/cultura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="21sp" />
 
         </LinearLayout>
     </ScrollView>
