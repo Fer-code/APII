@@ -176,4 +176,10 @@ public class DBHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getExpo(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select * from TBExpo where IDExpo="+id+"", null );
+        return res;
+    }
+
 }

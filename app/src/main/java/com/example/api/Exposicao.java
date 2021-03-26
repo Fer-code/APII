@@ -24,8 +24,9 @@ public class Exposicao extends AppCompatActivity {
 
     private TextView txtViewResult;
     private RequestQueue mQueue;
-    private EditText cont;
+    private EditText contE;
     int contador;
+    String vazioE;
 
     DBHelper db = new DBHelper(this);
     @Override
@@ -36,7 +37,7 @@ public class Exposicao extends AppCompatActivity {
         getSupportActionBar().hide();
 
         txtViewResult = findViewById(R.id.text_view_result);
-        cont = findViewById(R.id.pag);
+        contE = findViewById(R.id.pag);
 
         mQueue = Volley.newRequestQueue(this);
 
@@ -47,10 +48,19 @@ public class Exposicao extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void vai(View v) { jsonParse(); }
+    public void vai(View v) {
+        vazioE = contE.getText().toString();
+        if(vazioE.isEmpty()) {
+            Toast.makeText(Exposicao.this, "Informe uma página", Toast.LENGTH_SHORT).show();
+
+        }else{
+            jsonParse();
+        }
+
+    }
 
     private void jsonParse() {
-        contador = Integer.parseInt(cont.getText().toString());
+        contador = Integer.parseInt(contE.getText().toString());
 
         if (contador < 10){
             String url = "https://api.harvardartmuseums.org/exhibition?apikey=d66a16d0-0943-4495-a75d-7eca183f2c4f&page="+ contador;
@@ -93,7 +103,7 @@ public class Exposicao extends AppCompatActivity {
                 mQueue.add(request);
         }else{
             Toast.makeText(this, "Página não disponível", Toast.LENGTH_SHORT).show();
-            cont.setText("");
+            contE.setText("");
             txtViewResult.setText("");
         }
     }

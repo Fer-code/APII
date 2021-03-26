@@ -45,22 +45,22 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/cardview_light_background"
-                android:textSize="30sp" />
+                android:textSize="25sp" />
 
             <TextView
-                android:id="@+id/textview1"
+                android:id="@+id/textview4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:hint="@string/tituloExpo"
+                android:hint="@string/DescExpo"
                 android:textColorHint="@color/cardview_light_background"
                 android:textSize="21sp" />
 
 
             <TextView
-                android:id="@+id/tituloesc"
+                android:id="@+id/descesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -115,28 +115,7 @@
                 android:textColorHint="@color/cardview_light_background"
                 android:textSize="21sp" />
 
-            <TextView
-                android:id="@+id/textview4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:hint="@string/DescExpo"
-                android:textColorHint="@color/cardview_light_background"
-                android:textSize="21sp" />
 
-
-            <TextView
-                android:id="@+id/descesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/cardview_light_background"
-                android:textSize="21sp" />
 
             <TextView
                 android:id="@+id/textview5"
@@ -147,7 +126,7 @@
                 android:layout_marginLeft="10dp"
                 android:hint="@string/TempExpo"
                 android:textColorHint="@color/cardview_light_background"
-                android:textSize="21sp" />
+                android:textSize="15sp" />
 
 
             <TextView
@@ -159,7 +138,7 @@
                 android:layout_marginRight="10dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/cardview_light_background"
-                android:textSize="21sp" />
+                android:textSize="15sp" />
 
 
         </LinearLayout>

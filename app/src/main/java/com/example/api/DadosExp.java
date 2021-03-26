@@ -33,10 +33,10 @@ public class DadosExp extends AppCompatActivity {
 
             expoClass = new ExpoClass();
 
-            if (Value > 0){
-                Cursor rs = db.getData(Value);
+            if (Value > 0) {
+                Cursor rs = db.getExpo(Value);
                 id_To_Update = Value;
-                if(rs.moveToFirst()){
+                if (rs.moveToFirst()) {
                     expoClass.setTitleExpo(rs.getString(rs.getColumnIndex(db.EXPO_COLUMN_TITLE)));
                     expoClass.setDIExpo(rs.getString(rs.getColumnIndex(db.EXPO_COLUMN_DI)));
                     expoClass.setDFExpo(rs.getString(rs.getColumnIndex(db.EXPO_COLUMN_DF)));
@@ -44,16 +44,15 @@ public class DadosExp extends AppCompatActivity {
                     expoClass.setTemp(rs.getString(rs.getColumnIndex(db.EXPO_COLUMN_ORDEMTEMP)));
                 }
 
+            } else {
+                Toast.makeText(DadosExp.this, "Algo deu errado", Toast.LENGTH_SHORT).show();
+            }
                 tituloExpo.setText(expoClass.getTitleExpo());
                 DIExpo.setText(expoClass.getDIExpo());
                 DFExpo.setText(expoClass.getDFExpo());
                 DescExpo.setText(expoClass.getDesc());
                 TempExpo.setText(expoClass.getTemp());
 
-            } else {
-                Toast.makeText(DadosExp.this, "Algo de errado", Toast.LENGTH_SHORT).show();
-            }
         }
-
     }
 }

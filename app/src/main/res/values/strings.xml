@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">API</string>
     <string name="titulo">Museu ABC</string>
-    <string name="subtitulo">Museu contoso</string>
+    <string name="subtitulo">Museu trabalho
+    </string>
 
     <string name="Pesquisar">Pesquisar</string>
     <string name="banco">Vizualizar</string>
@@ -10,18 +11,17 @@
     <string name="artistas">Artistas</string>
     <string name="exposicao">Exposição</string>
 
-    <string name="nomeart">Nome:</string>
-    <string name="genero">Genero:</string>
-    <string name="localNasc">Local de Nascimento:</string>
-    <string name="localMorte">Local da Morte:</string>
-    <string name="AnoNascimento">Ano de Nascimento:</string>
-    <string name="cultura">Cultura:</string>
+    <string name="nomeart">-Nome:</string>
+    <string name="genero">-Genero:</string>
+    <string name="localNasc">-Local de Nascimento:</string>
+    <string name="localMorte">-Local da Morte:</string>
+    <string name="AnoNascimento">-Ano de Nascimento:</string>
+    <string name="cultura">-Cultura:</string>
     <string name="desc">https://harvardartmuseums.org/</string>
 
-    <string name="tituloExpo">Título:</string>
-    <string name="DIExpo">Data Inicial:</string>
-    <string name="DFExpo">Data Final:</string>
-    <string name="DescExpo">Descrição:</string>
-    <string name="TempExpo">Ordem Temporal:</string>
+    <string name="DIExpo">-Data Inicial:</string>
+    <string name="DFExpo">-Data Final:</string>
+    <string name="DescExpo">-Descrição:</string>
+    <string name="TempExpo">-Ordem Temporal:</string>
 
 </resources>
