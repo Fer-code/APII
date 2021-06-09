@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">API</string>
+    <string name="app_name">HarvardMuseums</string>
     <string name="titulo">Museu ABC</string>
     <string name="subtitulo">Museu trabalho
     </string>
@@ -24,4 +24,12 @@
     <string name="DescExpo">-Descrição:</string>
     <string name="TempExpo">-Ordem Temporal:</string>
 
+    <string name="local">Proximo de mim</string>
+    <string name="suaLocal">Sua localização é</string>
+    <string name="carregar">Carregar localização</string>
+    <string name="buscarProx">Buscar museus próximos</string>
+
+    <string name="address_text">"%1$s"</string>
+    <string name="no_address_found">Endereço não disponível</string>
+    <string name="loading">Por favor Aguarde enquanto fazemos a busca</string>
 </resources>

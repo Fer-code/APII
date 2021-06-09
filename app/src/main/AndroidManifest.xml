@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.API">
-        <activity android:name=".DadosExp"></activity>
+        <activity android:name=".LocalizacaoA"></activity>
+        <activity android:name=".DadosExp" />
         <activity android:name=".ListarExposicao" />
         <activity android:name=".DadosArt" />
         <activity android:name=".ListarArtista" />

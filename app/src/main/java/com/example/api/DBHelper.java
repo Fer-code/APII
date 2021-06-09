@@ -147,28 +147,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return  listaExpo;
     }
 
-    ArtClass selecionarart(int codigoA){
-
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(ARTISTA_TABLE_NAME, new String[]{ARTISTA_COLUMN_ID,
-                        ARTISTA_COLUMN_NAME, ARTISTA_COLUMN_NAMEART, ARTISTA_COLUMN_GENDER,
-                        ARTISTA_COLUMN_LOCALNASC, ARTISTA_COLUMN_ANONASC, ARTISTA_COLUMN_LOCALMORT,
-                        ARTISTA_COLUMN_CULTURA }, ARTISTA_COLUMN_ID + " = ?",
-                new String[] {String.valueOf(codigoA)}, null, null, null, null);
-
-
-        if(cursor != null){
-            cursor.moveToFirst();
-        }
-
-        ArtClass art = new ArtClass(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getString(3),
-                cursor.getString(4), cursor.getString(5), cursor.getString(6),
-                cursor.getString(7));
-
-        return art;
-    }
 
     public Cursor getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();

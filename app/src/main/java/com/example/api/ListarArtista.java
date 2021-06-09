@@ -66,7 +66,7 @@ public class ListarArtista extends AppCompatActivity {
 
             for(ArtClass c  : art){
 
-                arrayList.add(c.getNomeArtArt() + " - " + c.getAnoNasc());
+                arrayList.add(c.getNomeArtArt());
                 adapter.notifyDataSetChanged();
             }
     }

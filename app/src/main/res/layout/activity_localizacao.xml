@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/localfundo"
+    android:gravity="center"
+    tools:context=".LocalizacaoA">
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="50dp"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#000415">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginTop="5dp"
+            android:hint="@string/suaLocal"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtlocalizacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btncarregarlocal"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/botao"
+            android:hint="@string/carregar"
+            android:textColorHint="@color/white"
+            app:backgroundTint="#02292E" />
+
+        <Button
+            android:id="@+id/btnBuscarLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:background="@drawable/botao"
+            android:hint="@string/buscarProx"
+            android:textColorHint="@color/white"
+            app:backgroundTint="#000415" />
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
