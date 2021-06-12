@@ -32,15 +32,17 @@
         android:layout_height="2dp"
         android:background="?android:attr/listDivider" />
 
-    <EditText
+    <com.example.api.CustomView
         android:id="@+id/pag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/pagina"
+        app:layout_constraintBottom_toTopOf="@+id/CustomView"
         android:inputType="textPersonName"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
+
 
     <LinearLayout
         android:layout_width="match_parent"

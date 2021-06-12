@@ -39,6 +39,7 @@ public class Exposicao extends AppCompatActivity {
         txtViewResult = findViewById(R.id.text_view_result);
         contE = findViewById(R.id.pag);
 
+
         mQueue = Volley.newRequestQueue(this);
 
     }
