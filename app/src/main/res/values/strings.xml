@@ -34,4 +34,6 @@
     <string name="loading">Por favor Aguarde enquanto fazemos a busca</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
+    <string name="temquecarregar">Clique em Carregar localização</string>
 </resources>
