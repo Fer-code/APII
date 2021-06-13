@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +20,7 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
 public class LocalizacaoA extends AppCompatActivity implements
-        FetchAddressTask.OnTaskCompleted{
+        FetchAddressTask.OnTaskCompleted {
 
     public final static String ENDERECO = "com.example.api.END";
     private static final String TRACKING_LOCATION_KEY = "tracking_location";
@@ -42,6 +43,8 @@ public class LocalizacaoA extends AppCompatActivity implements
     private LocationCallback mLocationCallback;
     private boolean mTrackingLocation;
 
+    ProgressBar pb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,7 @@ public class LocalizacaoA extends AppCompatActivity implements
 
         btnBuscaLocal = findViewById(R.id.btncarregarlocal);
         txtResultado = findViewById(R.id.txtlocalizacao);
+        pb = findViewById(R.id.progressBar2);
 
         //
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -79,6 +83,17 @@ public class LocalizacaoA extends AppCompatActivity implements
                 }
             }
         };
+    }
+
+
+    public void buscarMuseus(View b) {
+        String localPreenchido = txtResultado.getText().toString();
+        if(localPreenchido==""){
+            Toast.makeText(this, getString(R.string.temquecarregar) , Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "ido ido ido Gabriel é fidido" , Toast.LENGTH_LONG).show();
+
+        }
     }
 
     //Método para verificar se a localização foi permitida ou não, e dependendo fará uma coisa ou outra
@@ -127,6 +142,7 @@ public class LocalizacaoA extends AppCompatActivity implements
                     (getLocationRequest(),
                             mLocationCallback,
                             null);
+            pb.setVisibility(true ? View.VISIBLE : View.GONE);
         }
     }
 
@@ -148,146 +164,10 @@ public class LocalizacaoA extends AppCompatActivity implements
             lastAdress = result[0];
             txtResultado.setText(getString(R.string.address_text,
                     lastAdress));
+
+            //Esconder a progressBar
+            pb.setVisibility(false ? View.VISIBLE : View.GONE);
         }
     }
+
 }
-
-/*
-
-btnmLocation.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                if (!mTrackingLocation) {
-                    startTrackingLocation();
-                } else {
-                    stopTrackingLocation();
-                }
-            }
-        });
-
-        mLocationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-
-                if (mTrackingLocation) {
-                    new FetchAddressTask(Local.this, Local.this)
-                            .execute(locationResult.getLastLocation());
-                }
-            }
-        };
-
-        mPreferences = getSharedPreferences(PREFERENCIAS_NAME, MODE_PRIVATE);
-        recuperar();
-
-    }
-
-
-
-    public void switchClick(View v)
-    {
-        podeGeo = switcher.isChecked();
-        SharedPreferences settings = getSharedPreferences(PREFERENCIAS_NAME , 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putBoolean(PREFERENCIAS_VALOR, podeGeo);
-        editor.commit();
-
-        if(podeGeo == false){
-            Toast.makeText(this, "Permissão negada", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(this, "Permissão aceita", Toast.LENGTH_SHORT).show();
-
-        }
-
-    }
-    private void recuperar()
-    {
-        SharedPreferences settings = getSharedPreferences(PREFERENCIAS_NAME , 0);
-        podeGeo = settings.getBoolean(PREFERENCIAS_VALOR, false);
-        switcher.setChecked(podeGeo);
-    }
-
-    private void startTrackingLocation() {
-        if (ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]
-                            {Manifest.permission.ACCESS_FINE_LOCATION},
-                    REQUEST_LOCATION_PERMISSION);
-        } else {
-            mTrackingLocation = true;
-            mFusedLocationClient.requestLocationUpdates
-                    (getLocationRequest(),
-                            mLocationCallback,
-                            null);
-
-            txtMLocation.setText(getString(R.string.address_text,
-                    getString(R.string.carregando), null, null));
-            btnmLocation.setText(R.string.buscar);
-
-        }
-    }
-
-    private LocationRequest getLocationRequest() {
-        LocationRequest locationRequest = new LocationRequest();
-        locationRequest.setInterval(10000);
-        locationRequest.setFastestInterval(5000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        return locationRequest;
-    }
-
-    private void stopTrackingLocation() {
-        if (mTrackingLocation) {
-            mTrackingLocation = false;
-            btnmLocation.setText(R.string.iniciar);
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putBoolean(TRACKING_LOCATION_KEY, mTrackingLocation);
-        super.onSaveInstanceState(outState);
-    }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_LOCATION_PERMISSION:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startTrackingLocation();
-                } else {
-                    Toast.makeText(this, R.string.permissao_negada,
-                            Toast.LENGTH_SHORT).show();
-                }
-                break;
-        }
-    }
-
-    @Override
-    public void onTaskCompleted(String[] result) {
-        if (mTrackingLocation) {
-            // Update the UI
-            lastLatitude = result[1];
-            lastLongitude = result[2];
-            lastAdress = result[0];
-            txtMLocation.setText(getString(R.string.address_text,
-                    lastAdress, lastLatitude, lastLongitude));
-        }
-    }
-
-
-
-    public void continuar(View continuar){
-        txtMLocation = findViewById(R.id.txtLocal);
-
-        String txtLocal = txtMLocation.getText().toString();
-
-            Toast.makeText(this, "Endereço Registrado com sucesso estamos a caminho", Toast.LENGTH_SHORT).show();
-
-    }
-
- */
