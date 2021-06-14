@@ -32,8 +32,17 @@
     <string name="address_text">"%1$s"</string>
     <string name="no_address_found">Endereço não disponível</string>
     <string name="loading">Por favor Aguarde enquanto fazemos a busca</string>
-    <string name="appwidget_text">EXAMPLE</string>
+    <string name="appwidget_text">HarvardMuseums</string>
     <string name="add_widget">Add widget</string>
 
     <string name="temquecarregar">Clique em Carregar localização</string>
+
+
+
+
+
+
+
+    <string name="date_count_format">%1$d @%2$s</string>
+
 </resources>
