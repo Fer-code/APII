@@ -11,12 +11,31 @@ import android.widget.RemoteViews;
 import java.text.DateFormat;
 import java.util.Date;
 
-/**
- * Implementation of App Widget functionality.
- */
 public class ObrasWidg extends AppWidgetProvider {
 
-        // Name of shared preferences file & key
+    @Override
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        for (int appWidgetId : appWidgetIds) {
+            Intent intent = new Intent(context, Artista.class);
+            Intent intentdois = new Intent(context, Exposicao.class);
+
+            PendingIntent pendingIntent= PendingIntent.getActivity(context, 0, intent, 0);
+
+            PendingIntent pend= PendingIntent.getActivity(context, 1, intentdois, 0);
+
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.obras_widg);
+
+            views.setOnClickPendingIntent(R.id.button_update, pendingIntent);
+            views.setOnClickPendingIntent(R.id.button_expo, pend);
+
+
+            appWidgetManager.updateAppWidget(appWidgetId, views);
+        }
+    }
+
+}
+
+        /*// Name of shared preferences file & key
         private static final String SHARED_PREFERENCES_FILE =
                 "com.example.api.appwidgetexemplo";
         private static final String COUNT_KEY = "contador";
@@ -42,6 +61,7 @@ public class ObrasWidg extends AppWidgetProvider {
         A hierarquia é inflada a partir de um arquivo de recurso de layout, e esta classe fornece algumas
         operações básicas para modificar o conteúdo da hierarquia inflada.
          */
+    /*
             RemoteViews views = new RemoteViews(context.getPackageName(),R.layout.obras_widg);
             views.setTextViewText(R.id.appwidget_id, String.valueOf(appWidgetId));
             views.setTextViewText(R.id.appwidget_update,  context.getResources().getString(
@@ -82,7 +102,7 @@ public class ObrasWidg extends AppWidgetProvider {
          * @param context          The application context.
          * @param appWidgetManager The app widget manager.
          * @param appWidgetIds     An array of the app widget IDs.
-         */
+
         @Override
         public void onUpdate(Context context, AppWidgetManager appWidgetManager,
                              int[] appWidgetIds) {
@@ -92,7 +112,7 @@ public class ObrasWidg extends AppWidgetProvider {
             }
         }
     }
-
+*/
 
 
 

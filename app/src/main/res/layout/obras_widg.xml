@@ -1,86 +1,52 @@
-<!-- Copyright 2017 Google Inc.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="@dimen/widget_margin">
 
-    <!-- Panel for Widget ID -->
     <LinearLayout
-        android:id="@+id/section_id"
+        android:minHeight="300dp"
+        android:minWidth="220dp"
         style="@style/AppWidgetSection"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/appwidget_id_label"
-            style="@style/AppWidgetLabel"
-            android:layout_width="5dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="widget id" />
-
-        <TextView
-            android:id="@+id/appwidget_id"
-            style="@style/AppWidgetText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/button_update"
             android:layout_weight="1"
-            android:gravity="end" />
-    </LinearLayout>
+            android:gravity="center"
+            android:background="@drawable/artista">
 
-    <!-- Panel for widget update date and number of updates -->
-    <LinearLayout
-        android:id="@+id/section_update"
-        style="@style/AppWidgetSection"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/section_id"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/artistas"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textColorHint="@android:color/holo_orange_dark"
+                android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/appwidget_update_label"
-            style="@style/AppWidgetLabel"
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:text="ultima atualização" />
+            android:id="@+id/button_expo"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/exposicao">
 
-        <TextView
-            android:id="@+id/appwidget_update"
-            style="@style/AppWidgetText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/date_count_format" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exposicao"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
     </LinearLayout>
-
-    <!-- Update widget button -->
-    <Button
-        android:id="@+id/button_update"
-        style="@style/AppWidgetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/section_update"
-        android:layout_centerHorizontal="true"
-        android:text="atualizar" />
 
 </RelativeLayout>

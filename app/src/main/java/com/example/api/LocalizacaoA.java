@@ -169,19 +169,9 @@ public class LocalizacaoA extends AppCompatActivity implements
         if(localPreenchido==""){
             Toast.makeText(this, getString(R.string.temquecarregar) , Toast.LENGTH_LONG).show();
         }else{
-            String origem = "origin="+lastLatitude+","+lastLongitude;
-
-            String destino = "destination=museu";
-
-            String mode = "mode=driving";
-
-            String parametro = origem+"&"+destino+"&"+mode;
-
-            String output = "json";
 
             Uri uri= Uri.parse("geo:0,0?q=museu");
 
-           // Uri uri = Uri.parse("https://maps.googleapis.com/maps/api/directions/"+output+"?"+parametro+"&key=AIzaSyCASsBISqXNR4imAynxnIw8Fa68Cv1c8cY");
             Intent it = new Intent(Intent.ACTION_VIEW,uri);
             startActivity(Intent.createChooser(it, "Selecione"));
 
