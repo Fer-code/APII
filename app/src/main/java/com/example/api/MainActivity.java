@@ -3,6 +3,7 @@ package com.example.api;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Service;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -13,59 +14,60 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import static android.hardware.Sensor.TYPE_LIGHT;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
-    private SensorManager sensorManager;
-    private Sensor lightSensor;
-    private SensorEventListener lighEventListener;
-    private View root;
-    private float maxValue;
+    SensorManager sensorManager;
+    Sensor sensor;
+    TextView recomenda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        root = findViewById(R.id.root);
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        lightSensor = sensorManager.getDefaultSensor(TYPE_LIGHT);
 
-        if (lightSensor == null) {
-            Toast.makeText(this, "O dispositivo não tem sensor de luminosidade", Toast.LENGTH_SHORT).show();
-            //finish();
-        }
+        //Aplicação do sensor
+        sensorManager=(SensorManager)getSystemService(Service.SENSOR_SERVICE);
+        sensor=sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
-        maxValue = lightSensor.getMaximumRange();
 
-        lighEventListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent sensorEvent) {
-                float value = sensorEvent.values[0];
-                int newValue = (int) (255f * value / maxValue);
-                root.setBackgroundColor(Color.rgb(newValue, newValue, newValue));
-            }
-
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int i) {
-
-            }
-        };
     }
-
-        @Override
-        protected  void onResume(){
-        super.onResume();
-        sensorManager.registerListener(lighEventListener, lightSensor, SensorManager.SENSOR_DELAY_FASTEST);
-        }
 
     @Override
-    protected  void onPause(){
+    protected void onPause() {
         super.onPause();
-        sensorManager.unregisterListener(lighEventListener);
+        sensorManager.unregisterListener(this);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener((SensorEventListener) this,sensor,SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if(event.sensor.getType()== TYPE_LIGHT){
+            //Caso o ambiente estiver escuro
+            if(event.values[0]==0){
+                Toast.makeText(this, "Por favor, diminua o brilho do celular", Toast.LENGTH_SHORT).show();
+
+                //Caso o ambiente esteja claro
+            }else{
+
+            }
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
