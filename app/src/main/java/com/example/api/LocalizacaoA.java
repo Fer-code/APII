@@ -24,6 +24,8 @@ import com.google.android.gms.location.LocationServices;
 public class LocalizacaoA extends AppCompatActivity implements
         FetchAddressTask.OnTaskCompleted {
 
+    DBHelper db = new DBHelper(this);
+
     public final static String ENDERECO = "com.example.api.END";
     private static final String TRACKING_LOCATION_KEY = "tracking_location";
     private static final String FILE_NAME = "example.txt";

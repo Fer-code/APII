@@ -100,7 +100,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //Listar todos os artistas
     public List<ArtClass> listaTodosArtistas (){
         List<ArtClass> listaArtista    = new ArrayList<ArtClass>();
-        String query = "SELECT * FROM " + ARTISTA_TABLE_NAME;
+        String query = "SELECT * FROM " + ARTISTA_TABLE_NAME ;
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor c = db.rawQuery(query, null);

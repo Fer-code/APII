@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class Artista extends AppCompatActivity{
     private EditText cont;
     int contador;
     String vazio;
+    ProgressBar progressBar;
 
     DBHelper db = new DBHelper(this);
 
@@ -43,7 +45,7 @@ public class Artista extends AppCompatActivity{
 
         mQueue = Volley.newRequestQueue(this);
 
-
+        progressBar = findViewById(R.id.progressBar3);
     }
 
     public void list(View v){
@@ -59,8 +61,11 @@ public class Artista extends AppCompatActivity{
 
         }else{
             jsonParse();
+            cont.setText("");
+
         }
     }
+
 
     private void jsonParse() {
 
@@ -68,16 +73,28 @@ public class Artista extends AppCompatActivity{
 
             if (contador < 10) {
 
+                /*
+                String result = mTextViewResult.getText().toString();
+                if(result==""){
+                    progressBar.setVisibility(true ? View.VISIBLE : View.GONE);
+                }else {
+                    progressBar.setVisibility(false ? View.VISIBLE : View.GONE);
+                }*/
+
                 String url = "https://api.harvardartmuseums.org/Person?apikey=d66a16d0-0943-4495-a75d-7eca183f2c4f&page=" + contador;
 
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
+
                                 try {
                                     JSONArray jsonArray = response.getJSONArray("records");
 
                                     for (int i = 0; i < 10; i++) {
+                                        /*if(mTextViewResult==null){
+
+                                        }*/
                                         JSONObject artist = jsonArray.getJSONObject(i);
 
                                         String alphasort = artist.getString("alphasort");
