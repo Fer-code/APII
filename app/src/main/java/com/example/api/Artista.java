@@ -73,13 +73,13 @@ public class Artista extends AppCompatActivity{
 
             if (contador < 10) {
 
-                /*
+
                 String result = mTextViewResult.getText().toString();
                 if(result==""){
                     progressBar.setVisibility(true ? View.VISIBLE : View.GONE);
                 }else {
-                    progressBar.setVisibility(false ? View.VISIBLE : View.GONE);
-                }*/
+
+                }
 
                 String url = "https://api.harvardartmuseums.org/Person?apikey=d66a16d0-0943-4495-a75d-7eca183f2c4f&page=" + contador;
 
@@ -106,6 +106,8 @@ public class Artista extends AppCompatActivity{
                                         String deathplace = artist.getString("deathplace");
 
                                         mTextViewResult.append(alphasort + "\n");
+
+                                        progressBar.setVisibility(false ? View.VISIBLE : View.GONE);
 
                                         try {
                                             db.addArtista(new ArtClass(alphasort, displayname, gender, birthplace, datebegin, deathplace, culture));

@@ -91,6 +91,14 @@
                 android:textColor="@color/cardview_light_background"
                 android:textSize="20sp" />
 
+            <ProgressBar
+                android:id="@+id/progressBar4"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:visibility="gone"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
     </ScrollView>
 

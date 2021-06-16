@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +28,10 @@ public class Exposicao extends AppCompatActivity {
     private EditText contE;
     int contador;
     String vazioE;
+    ProgressBar progressBar;
 
     DBHelper db = new DBHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,20 +45,23 @@ public class Exposicao extends AppCompatActivity {
 
         mQueue = Volley.newRequestQueue(this);
 
+        progressBar = findViewById(R.id.progressBar4);
+
     }
 
-    public void list(View v){
+    public void list(View v) {
         Intent intent = new Intent(Exposicao.this, ListarExposicao.class);
         startActivity(intent);
     }
 
     public void vai(View v) {
         vazioE = contE.getText().toString();
-        if(vazioE.isEmpty()) {
+        if (vazioE.isEmpty()) {
             Toast.makeText(Exposicao.this, "Informe uma página", Toast.LENGTH_SHORT).show();
 
-        }else{
+        } else {
             jsonParse();
+            contE.setText("");
         }
 
     }
@@ -63,49 +69,59 @@ public class Exposicao extends AppCompatActivity {
     private void jsonParse() {
         contador = Integer.parseInt(contE.getText().toString());
 
-        if (contador < 10){
-            String url = "https://api.harvardartmuseums.org/exhibition?apikey=d66a16d0-0943-4495-a75d-7eca183f2c4f&page="+ contador;
+            if (contador < 10) {
 
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                JSONArray jsonArray = response.getJSONArray("records");
+                String result = txtViewResult.getText().toString();
+                if (result == "") {
+                    progressBar.setVisibility(true ? View.VISIBLE : View.GONE);
+                } else {}
 
-                                for (int i = 0; i < 10; i++){
-                                    JSONObject exposicao = jsonArray.getJSONObject(i);
+                String url = "https://api.harvardartmuseums.org/exhibition?apikey=d66a16d0-0943-4495-a75d-7eca183f2c4f&page=" + contador;
 
-                                    String title = exposicao.getString("title");
-                                    String begindate = exposicao.getString("begindate");
-                                    String enddate = exposicao.getString("enddate");
-                                    String description = exposicao.getString("description");
-                                    String temporalorder = exposicao.getString("temporalorder");
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    JSONArray jsonArray = response.getJSONArray("records");
 
-                                    txtViewResult.append(title + "\n");
+                                    for (int i = 0; i < 10; i++) {
+                                        JSONObject exposicao = jsonArray.getJSONObject(i);
 
-                                    try{
-                                        db.addExpo(new ExpoClass(title, begindate, enddate, description, temporalorder));
-                                    } catch (Exception e){
+                                        String title = exposicao.getString("title");
+                                        String begindate = exposicao.getString("begindate");
+                                        String enddate = exposicao.getString("enddate");
+                                        String description = exposicao.getString("description");
+                                        String temporalorder = exposicao.getString("temporalorder");
 
+                                        txtViewResult.append(title + "\n");
+
+                                        progressBar.setVisibility(false ? View.VISIBLE : View.GONE);
+
+                                        try {
+                                            db.addExpo(new ExpoClass(title, begindate, enddate, description, temporalorder));
+                                        } catch (Exception e) {
+
+                                        }
                                     }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
                                 }
 
-                            } catch (JSONException e){
-                                e.printStackTrace();
                             }
+                        }, new Response.ErrorListener() {
 
-                        }
-                    }, new Response.ErrorListener(){
-
-                @Override
-                public void onErrorResponse(VolleyError error) { error.printStackTrace(); }
-            });
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
                 mQueue.add(request);
-        }else{
-            Toast.makeText(this, "Página não disponível", Toast.LENGTH_SHORT).show();
-            contE.setText("");
-            txtViewResult.setText("");
+            } else {
+                Toast.makeText(this, "Página não disponível", Toast.LENGTH_SHORT).show();
+                contE.setText("");
+                txtViewResult.setText("");
+            }
         }
     }
-}
