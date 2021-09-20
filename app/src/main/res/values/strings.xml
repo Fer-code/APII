@@ -41,4 +41,21 @@
 
     <string name="date_count_format">%1$d @%2$s</string>
 
+    <string name="Museu">Museus</string>
+    <string name="localização">Localização</string>
+
+    <string name="Favoritos">Favoritos</string>
+
+    <string name="Password">Senha</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="name">Nome</string>
+    <string name="email">Email</string>
+
+    <string name="login"><u>Login</u></string>
+
+    <string name="cliqueaqui">Clique Aqui</string>
+    <string name="FazerRegistro">Ainda não tem cadastro?</string>
+    <string name="cadastro">Cadastro</string>
+
+
 </resources>

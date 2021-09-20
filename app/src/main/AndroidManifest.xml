@@ -13,6 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.API">
+        <activity android:name=".CadUsuario"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".infoMuseu" />
+        <activity android:name=".CadMuseu" />
+        <activity android:name=".Museu" />
+
         <receiver android:name=".ObrasWidg">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

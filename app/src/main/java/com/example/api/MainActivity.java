@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     SensorManager sensorManager;
     Sensor sensor;
-    TextView recomenda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

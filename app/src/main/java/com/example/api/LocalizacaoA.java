@@ -26,13 +26,8 @@ public class LocalizacaoA extends AppCompatActivity implements
 
     DBHelper db = new DBHelper(this);
 
-    public final static String ENDERECO = "com.example.api.END";
-    private static final String TRACKING_LOCATION_KEY = "tracking_location";
-    private static final String FILE_NAME = "example.txt";
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
-    private static final String LATITUDE_KEY = "latitude";
-    private static final String LONGITUDE_KEY = "longitude";
 
     private Button btnBuscaLocal; //Usado para carregar a geolocalização
     private TextView txtResultado;
@@ -42,7 +37,6 @@ public class LocalizacaoA extends AppCompatActivity implements
     private String lastAdress = "";
 
 
-    private static final String LASTADRESS_KEY = "adress";
     private FusedLocationProviderClient mFusedLocationClient;
     private LocationCallback mLocationCallback;
     private boolean mTrackingLocation;
@@ -112,14 +106,6 @@ public class LocalizacaoA extends AppCompatActivity implements
         }
     }
 
-    //Botao para chamar a localização-btncarregarlocal
-    /*public void iniciarChamada(){
-        if (!mTrackingLocation) {
-            startTrackingLocation();
-        } else {
-            stopTrackingLocation();
-        }
-            }*/
 
     private void stopTrackingLocation() {
     }
@@ -137,6 +123,8 @@ public class LocalizacaoA extends AppCompatActivity implements
                     (getLocationRequest(),
                             mLocationCallback,
                             null);
+
+            //Se for true roda o visible, se for false roda o gone
             pb.setVisibility(true ? View.VISIBLE : View.GONE);
         }
     }

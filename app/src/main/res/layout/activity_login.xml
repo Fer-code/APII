@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginmuseureal"
+    android:orientation="vertical"
+    tools:context=".Login">
+
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="50dp"
+        android:layout_marginTop="800px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#000415">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:layout_marginTop="10dp"
+                android:hint="@string/login"
+                android:textColorHint="@color/white"
+                android:textSize="30sp" />
+
+
+            <EditText
+                android:id="@+id/idNomeUsuario"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:ems="10"
+                android:hint="@string/email"
+                android:backgroundTint="@color/cardview_light_background"
+                android:textColor="@color/cardview_light_background"
+                android:inputType="textPersonName"
+                android:textColorHint="@android:color/background_light"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/idSenhaUsuario"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/cardview_light_background"
+                android:textColor="@color/cardview_light_background"
+                android:textColorHint="@color/cardview_light_background"
+                android:layout_marginTop="15dp"
+                android:textSize="24sp"
+                android:ems="10"
+                android:hint="@string/Password"
+                android:inputType="textPassword" />
+
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/botao_borda"
+                android:hint="@string/confirmar"
+                android:textAllCaps="false"
+                android:textColorHint="@android:color/white"
+                android:textSize="24sp"
+                app:backgroundTint="@color/light_blue_600" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/FazerRegistro"
+                    android:textColorHint="@android:color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/btnCliqueAqui"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:hint="@string/cliqueaqui"
+                    android:textColorHint="@android:color/holo_blue_bright"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+
+

@@ -59,14 +59,9 @@ public class CustomView extends AppCompatEditText {
                         }
                         if (isClearButtonClicked.get()) {
                             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                                /*mClearButtonImage = ResourcesCompat.getDrawable(getResources(),
-                                        R.drawable.clear_button, null);*/
                                 showClearButton();
                             }
                             if (event.getAction() == MotionEvent.ACTION_UP) {
-                                /*mClearButtonImage =
-                                        ResourcesCompat.getDrawable(getResources(),
-                                                R.drawable.clear_button, null);*/
                                 // limpa o texto
                                 getText().clear();
                                 //esconde o botão
@@ -87,7 +82,6 @@ public class CustomView extends AppCompatEditText {
             @Override
             public void beforeTextChanged(CharSequence s,
                                           int start, int count, int after) {
-                // Do nothing.
             }
 
             @Override
@@ -98,7 +92,7 @@ public class CustomView extends AppCompatEditText {
 
             @Override
             public void afterTextChanged(Editable s) {
-                // Do nothing.
+
             }
         });
     }
@@ -106,19 +100,13 @@ public class CustomView extends AppCompatEditText {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void hideClearButton() {
         setCompoundDrawablesRelativeWithIntrinsicBounds
-                (null,             // Inicio do texto
-                        null,      // Topo do texto
-                        null,      // Fim do texto
-                        null);     // Abaixo do texto.
+                (null, null, null, null);
     }
 
     private void showClearButton() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             setCompoundDrawablesRelativeWithIntrinsicBounds
-                    (null,                      // Inicio do texto
-                            null,               // Topo do texto.
-                            mClearButtonImage,  // Fim do Texto
-                            null);              // Abaixo do texto
+                    (null, null, mClearButtonImage, null);
         }
     }
 }
