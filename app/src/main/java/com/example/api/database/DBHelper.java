@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.example.api.models.ArtClass;
 import com.example.api.models.ExpoClass;
+import com.example.api.models.UserClass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String EXPO_COLUMN_DESC = "DescExpo";
     public static final String EXPO_COLUMN_ORDEMTEMP = "OTExpo";
 
+    //TABELA USER
+    public static final String USER_TABLE_NAME = "TBuser";
+    public static final String USER_COLUMN_ID = "IDuser";
+    public static final String USER_COLUMN_NAME = "NameUser";
+    public static final String USER_COLUMN_EMAIL = "EmailUser";
+    public static final String USER_COLUMN_PASSWORD = "PasswordUser";
+
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -56,6 +64,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 EXPO_COLUMN_DI + " TEXT, " + EXPO_COLUMN_DF + " TEXT, " + EXPO_COLUMN_DESC + " TEXT, " +
                 EXPO_COLUMN_ORDEMTEMP + " TEXT); ";
 
+        String QUERY_CLI = "CREATE TABLE " + USER_TABLE_NAME
+                + " ( " + USER_COLUMN_ID + " INTEGER PRIMARY KEY, " + USER_COLUMN_NAME + "  TEXT, " +
+                USER_COLUMN_EMAIL + " TEXT, " + USER_COLUMN_PASSWORD + " TEXT); ";
+
         db.execSQL(QUERY_ARTISTA);
         db.execSQL(QUERY_EXPO);
 
@@ -66,6 +78,35 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + ARTISTA_TABLE_NAME + ";");
         db.execSQL("DROP TABLE IF EXISTS " + EXPO_TABLE_NAME + ";");
         onCreate(db);
+    }
+
+    public void addUser(UserClass user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(USER_COLUMN_ID, user.getIdUser());
+        values.put(USER_COLUMN_NAME, user.getNameUser());
+        values.put(USER_COLUMN_EMAIL, user.getEmailUser());
+        values.put(USER_COLUMN_PASSWORD, user.getPasswordUser());
+
+        db.insert(USER_TABLE_NAME, null, values);
+        db.close();
+    }
+
+    public void addExpo(ExpoClass expo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(EXPO_COLUMN_TITLE, expo.getTitleExpo());
+        values.put(EXPO_COLUMN_DI, expo.getDIExpo());
+        values.put(EXPO_COLUMN_DF, expo.getDFExpo());
+        values.put(EXPO_COLUMN_DESC, expo.getDesc());
+        values.put(EXPO_COLUMN_ORDEMTEMP, expo.getTemp());
+
+        db.insert(EXPO_TABLE_NAME, null, values);
+        db.close();
     }
 
     public void addArtista(ArtClass artista) {
@@ -82,21 +123,6 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(ARTISTA_COLUMN_CULTURA, artista.getCulArt());
 
         db.insert(ARTISTA_TABLE_NAME, null, values);
-        db.close();
-    }
-
-    public void addExpo(ExpoClass expo) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-
-        values.put(EXPO_COLUMN_TITLE, expo.getTitleExpo());
-        values.put(EXPO_COLUMN_DI, expo.getDIExpo());
-        values.put(EXPO_COLUMN_DF, expo.getDFExpo());
-        values.put(EXPO_COLUMN_DESC, expo.getDesc());
-        values.put(EXPO_COLUMN_ORDEMTEMP, expo.getTemp());
-
-        db.insert(EXPO_TABLE_NAME, null, values);
         db.close();
     }
 
@@ -161,6 +187,25 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select * from TBExpo where IDExpo=" + id + "", null);
         return res;
+    }
+
+    public boolean autenticaUsuario(UserClass usuario){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql_busca_usuario =
+                "SELECT * FROM " + USER_TABLE_NAME + " WHERE " + USER_COLUMN_EMAIL + " = " + "'" + usuario.getEmailUser() + "'";
+        Cursor c = db.rawQuery(sql_busca_usuario, null);
+        while(c.moveToNext()){
+            if(usuario.getEmailUser().equals(c.getString(c.getColumnIndex(USER_COLUMN_EMAIL)))){
+                if(usuario.getPasswordUser().equals(c.getString(c.getColumnIndex(USER_COLUMN_PASSWORD)))){
+                    return true;
+                }
+
+            }
+        }
+        db.close();
+        c.close();
+
+        return false;
     }
 
     //Busca id do usuário pelo email

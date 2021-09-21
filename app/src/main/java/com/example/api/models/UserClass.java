@@ -8,6 +8,7 @@ public class UserClass {
 
     public UserClass(){}
 
+
     public UserClass(int idUser, String nameUser, String emailUser, String passwordUser) {
         this.idUser = idUser;
         this.nameUser = nameUser;
