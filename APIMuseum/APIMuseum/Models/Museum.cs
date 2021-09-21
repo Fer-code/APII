@@ -11,13 +11,11 @@ namespace APIMuseum.Models
         {
 
         }
-        public Museum(int idM, string nameM, string addressM, string latM, string logM, int userM)
+        public Museum(int idM, string nameM, string addressM, int userM)
         {
             IdM = idM;
             NameM = nameM;
             AddressM = addressM;
-            LatM = latM;
-            LogM = logM;
             UserM = userM;
 
         }
@@ -25,8 +23,6 @@ namespace APIMuseum.Models
         public int IdM { get; set; }
         public string NameM { get; set; }
         public string AddressM { get; set; }
-        public string LatM { get; set; }
-        public string LogM { get; set; }
         public int UserM { get; set; }
 
     }

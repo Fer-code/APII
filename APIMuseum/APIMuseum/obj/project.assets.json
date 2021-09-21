@@ -6354,11 +6354,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Workspaces\\ws-APIMobile\\APIMuseum\\APIMuseum\\APIMuseum.csproj",
+      "projectUniqueName": "C:\\Workspaces\\APII\\APIMuseum\\APIMuseum\\APIMuseum.csproj",
       "projectName": "APIMuseum",
-      "projectPath": "C:\\Workspaces\\ws-APIMobile\\APIMuseum\\APIMuseum\\APIMuseum.csproj",
+      "projectPath": "C:\\Workspaces\\APII\\APIMuseum\\APIMuseum\\APIMuseum.csproj",
       "packagesPath": "C:\\Users\\Gabriel Henrique\\.nuget\\packages\\",
-      "outputPath": "C:\\Workspaces\\ws-APIMobile\\APIMuseum\\APIMuseum\\obj\\",
+      "outputPath": "C:\\Workspaces\\APII\\APIMuseum\\APIMuseum\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

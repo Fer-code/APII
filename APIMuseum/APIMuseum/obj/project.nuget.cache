@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0gwSe5af1JsLWCcHocasPJ6wGbX/Z4jQhE+wFBXWExhwSXqougeGCB8jJgWbSOyPBWKBMG5IZBoAS/aNc3gSmg==",
+  "dgSpecHash": "gJxEenUCXuKEwaOrdouA0g1kXrsUttDkErCAe0GPOLZaYozHwLpTdtztDYl5jgJ3Z8AnsTnIoPXuKHXbi32RXw==",
   "success": true,
-  "projectFilePath": "C:\\Workspaces\\ws-APIMobile\\APIMuseum\\APIMuseum\\APIMuseum.csproj",
+  "projectFilePath": "C:\\Workspaces\\APII\\APIMuseum\\APIMuseum\\APIMuseum.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gabriel Henrique\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\Gabriel Henrique\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",
