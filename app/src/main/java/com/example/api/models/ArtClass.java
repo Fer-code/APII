@@ -1,15 +1,15 @@
-package com.example.api;
+package com.example.api.models;
 
 public class ArtClass {
 
-    int codArt;
-    String nomeArt;
-    String nomeArtArt;
-    String genero;
-    String localNasc;
-    String AnoNasc;
-    String localMorte;
-    String culArt;
+    public int codArt;
+    public String nomeArt;
+    public String nomeArtArt;
+    public String genero;
+    public String localNasc;
+    public String AnoNasc;
+    public String localMorte;
+    public String culArt;
 
     public ArtClass(){}
 

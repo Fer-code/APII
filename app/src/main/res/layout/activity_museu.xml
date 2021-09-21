@@ -30,8 +30,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:onClick="CadM"
         app:backgroundTint="?android:attr/colorPressedHighlight"
-         />
+        tools:ignore="OnClick" />
 
 
 </LinearLayout>

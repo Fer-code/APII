@@ -52,6 +52,10 @@
     <string name="email">Email</string>
 
     <string name="login"><u>Login</u></string>
+    <string name="address">Endereço</string>
+    <string name="nowLocal">Buscar localização atual</string>
+    <string name="or">Ou</string>
+
 
     <string name="cliqueaqui">Clique Aqui</string>
     <string name="FazerRegistro">Ainda não tem cadastro?</string>

@@ -6,4 +6,125 @@
     android:background="#000415"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300px"
+        android:gravity="center"
+        android:background="@drawable/museus">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Museu"
+            android:gravity="center"
+            android:textSize="50sp"
+            android:fontFamily="sans-serif-black"
+            android:textColorHint="?android:attr/colorPressedHighlight"/>
+
+    </LinearLayout>
+
+    <com.example.api.CustomView
+        android:id="@+id/txtNomeMuseu"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/name"
+        android:backgroundTint="@color/cardview_light_background"
+        android:textColor="@color/cardview_light_background"
+        android:inputType="textPersonName"
+        android:textColorHint="@android:color/background_light"
+        android:textSize="20sp" />
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#000439">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/BuscarLM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000439"
+                android:gravity="center"
+                android:hint="@string/nowLocal"
+                android:textColorHint="@color/white"
+                android:textSize="16sp"
+                app:backgroundTint="@color/material_on_background_disabled" />
+
+
+            <TextView
+                android:id="@+id/txtlocalM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:hint="@string/or"
+        android:gravity="center"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"/>
+
+    <com.example.api.CustomView
+        android:id="@+id/txtAdressMuseu"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/address"
+        android:backgroundTint="@color/cardview_light_background"
+        android:textColor="@color/cardview_light_background"
+        android:inputType="textPersonName"
+        android:textColorHint="@android:color/background_light"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button_parse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:hint="@string/confirmar"
+        android:textColorHint="@color/white"
+        android:textSize="22sp"
+        app:backgroundTint="@android:color/holo_orange_light" />
+
+
 </LinearLayout>

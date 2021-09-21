@@ -95,4 +95,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Intent intent = new Intent(MainActivity.this, Artista.class);
         startActivity(intent);
     }
+    public void Mus(View v){
+        Intent intent = new Intent(MainActivity.this, Museu.class);
+        startActivity(intent);
+    }
 }

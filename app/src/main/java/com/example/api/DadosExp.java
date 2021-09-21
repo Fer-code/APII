@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.api.database.DBHelper;
+import com.example.api.models.ExpoClass;
+
 public class DadosExp extends AppCompatActivity {
 
     TextView tituloExpo, DIExpo, DFExpo, DescExpo, TempExpo;

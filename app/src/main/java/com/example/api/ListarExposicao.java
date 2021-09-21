@@ -9,6 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.api.database.DBHelper;
+import com.example.api.models.ExpoClass;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.api;
+package com.example.api.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import com.example.api.models.ArtClass;
+import com.example.api.models.ExpoClass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //TABELA EXPOSIÇÃO
     public static final String EXPO_TABLE_NAME = "TBExpo";
-    public static final String EXPO_COLUMN_ID= "IDExpo";
+    public static final String EXPO_COLUMN_ID = "IDExpo";
     public static final String EXPO_COLUMN_TITLE = "TitleExpo";
     public static final String EXPO_COLUMN_DI = "DIExpo";
     public static final String EXPO_COLUMN_DF = "DFExpo";
@@ -44,14 +47,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         String QUERY_ARTISTA = "CREATE TABLE " + ARTISTA_TABLE_NAME
-                +  " ( " +ARTISTA_COLUMN_ID+ " INTEGER PRIMARY KEY, " + ARTISTA_COLUMN_NAME + "  TEXT UNIQUE, " +
-                ARTISTA_COLUMN_NAMEART +  " TEXT, " +  ARTISTA_COLUMN_GENDER + " TEXT, " +ARTISTA_COLUMN_LOCALNASC+ " TEXT, " +
-                ARTISTA_COLUMN_ANONASC  + " TEXT, " +ARTISTA_COLUMN_LOCALMORT+  " TEXT, " +ARTISTA_COLUMN_CULTURA+ " TEXT); ";
+                + " ( " + ARTISTA_COLUMN_ID + " INTEGER PRIMARY KEY, " + ARTISTA_COLUMN_NAME + "  TEXT UNIQUE, " +
+                ARTISTA_COLUMN_NAMEART + " TEXT, " + ARTISTA_COLUMN_GENDER + " TEXT, " + ARTISTA_COLUMN_LOCALNASC + " TEXT, " +
+                ARTISTA_COLUMN_ANONASC + " TEXT, " + ARTISTA_COLUMN_LOCALMORT + " TEXT, " + ARTISTA_COLUMN_CULTURA + " TEXT); ";
 
         String QUERY_EXPO = "CREATE TABLE " + EXPO_TABLE_NAME
-                +  " ( " +EXPO_COLUMN_ID+ " INTEGER PRIMARY KEY, " + EXPO_COLUMN_TITLE + "  TEXT, " +
-                EXPO_COLUMN_DI +  " TEXT, " +  EXPO_COLUMN_DF + " TEXT, " +EXPO_COLUMN_DESC+ " TEXT, " +
-                EXPO_COLUMN_ORDEMTEMP  + " TEXT); ";
+                + " ( " + EXPO_COLUMN_ID + " INTEGER PRIMARY KEY, " + EXPO_COLUMN_TITLE + "  TEXT, " +
+                EXPO_COLUMN_DI + " TEXT, " + EXPO_COLUMN_DF + " TEXT, " + EXPO_COLUMN_DESC + " TEXT, " +
+                EXPO_COLUMN_ORDEMTEMP + " TEXT); ";
 
         db.execSQL(QUERY_ARTISTA);
         db.execSQL(QUERY_EXPO);
@@ -60,12 +63,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + ARTISTA_TABLE_NAME + ";" );
-        db.execSQL("DROP TABLE IF EXISTS " + EXPO_TABLE_NAME + ";" );
+        db.execSQL("DROP TABLE IF EXISTS " + ARTISTA_TABLE_NAME + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + EXPO_TABLE_NAME + ";");
         onCreate(db);
     }
 
-    void addArtista (ArtClass artista){
+    public void addArtista(ArtClass artista) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -82,7 +85,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    void addExpo (ExpoClass expo){
+    public void addExpo(ExpoClass expo) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -98,15 +101,15 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //Listar todos os artistas
-    public List<ArtClass> listaTodosArtistas (){
-        List<ArtClass> listaArtista    = new ArrayList<ArtClass>();
-        String query = "SELECT * FROM " + ARTISTA_TABLE_NAME ;
+    public List<ArtClass> listaTodosArtistas() {
+        List<ArtClass> listaArtista = new ArrayList<ArtClass>();
+        String query = "SELECT * FROM " + ARTISTA_TABLE_NAME;
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor c = db.rawQuery(query, null);
 
-        if(c.moveToFirst()){
-            do{
+        if (c.moveToFirst()) {
+            do {
                 ArtClass art = new ArtClass();
                 art.setCodArt(Integer.parseInt(c.getString(0)));
                 art.setNomeArt(c.getString(1));
@@ -118,21 +121,21 @@ public class DBHelper extends SQLiteOpenHelper {
                 art.setCulArt(c.getString(7));
 
                 listaArtista.add(art);
-            }while(c.moveToNext());
+            } while (c.moveToNext());
         }
-        return  listaArtista;
+        return listaArtista;
     }
 
     //Listar todas as exposicoes
-    public List<ExpoClass> listaTodosExpo (){
-        List<ExpoClass> listaExpo    = new ArrayList<ExpoClass>();
+    public List<ExpoClass> listaTodosExpo() {
+        List<ExpoClass> listaExpo = new ArrayList<ExpoClass>();
         String query = "SELECT * FROM " + EXPO_TABLE_NAME;
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor c = db.rawQuery(query, null);
 
-        if(c.moveToFirst()){
-            do{
+        if (c.moveToFirst()) {
+            do {
                 ExpoClass expo = new ExpoClass();
                 expo.setCodExpo(Integer.parseInt(c.getString(0)));
                 expo.setTitleExpo(c.getString(1));
@@ -142,22 +145,44 @@ public class DBHelper extends SQLiteOpenHelper {
                 expo.setTemp(c.getString(5));
 
                 listaExpo.add(expo);
-            }while(c.moveToNext());
+            } while (c.moveToNext());
         }
-        return  listaExpo;
+        return listaExpo;
     }
 
 
     public Cursor getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from TBArtista where idArt="+id+"", null );
+        Cursor res = db.rawQuery("select * from TBArtista where idArt=" + id + "", null);
         return res;
     }
 
     public Cursor getExpo(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from TBExpo where IDExpo="+id+"", null );
+        Cursor res = db.rawQuery("select * from TBExpo where IDExpo=" + id + "", null);
         return res;
     }
 
+    //Busca id do usuário pelo email
+    /*
+    public int pegaCodUser(String nome) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(USUARIO_TABLE_NAME, new String[]{USUARIO_COLUMN_ID},
+                USUARIO_COLUMN_NAME + " = ?" ,
+                new String[] {String.valueOf(nome)}, null, null, null, null);
+
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+
+        int cod = cursor.getInt(0);
+
+        cursor.close();
+
+        return cod;
+
+    }*/
 }
+

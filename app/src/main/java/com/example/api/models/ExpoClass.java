@@ -1,13 +1,13 @@
-package com.example.api;
+package com.example.api.models;
 
 public class ExpoClass {
 
-    int CodExpo;
-    String titleExpo;
-    String DIExpo;
-    String DFExpo;
-    String Desc;
-    String Temp;
+    public int CodExpo;
+    public String titleExpo;
+    public String DIExpo;
+    public String DFExpo;
+    public String Desc;
+    public String Temp;
 
     public ExpoClass(){}
 
