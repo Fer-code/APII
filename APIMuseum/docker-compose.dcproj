@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Windows</DockerTargetOS>
-    <ProjectGuid>9e3fa710-ddef-4770-a2e0-2317f7b7552b</ProjectGuid>
+    <ProjectGuid>e6743f14-c4c1-4d88-a776-e11bc11e29cc</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://{ServiceIPAddress}{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>apimuseum</DockerServiceName>

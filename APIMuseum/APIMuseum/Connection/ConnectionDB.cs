@@ -11,7 +11,7 @@ namespace APIMuseum.Connection
     {
 
 
-        MySqlConnection connect = new MySqlConnection("Server=host.docker.internal; port=3308; Database=dbApiMobile; user=root; pwd=root");
+        MySqlConnection connect = new MySqlConnection("server= host.docker.internal; port=3308; Database=dbApiMobile; user=root; pwd=root");
         public static string msg;
 
         public MySqlConnection ConectarBD()
