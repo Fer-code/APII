@@ -25,6 +25,10 @@
 
     </LinearLayout>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -33,6 +37,8 @@
         android:onClick="CadM"
         app:backgroundTint="?android:attr/colorPressedHighlight"
         tools:ignore="OnClick" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 </LinearLayout>

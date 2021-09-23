@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.example.api.models.ArtClass;
 import com.example.api.models.ExpoClass;
+import com.example.api.models.MuseuClass;
 import com.example.api.models.UserClass;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "EXPObd";
-    public static final int DATABASE_VERSION = 2;
+    public static final String DATABASE_NAME = "EXPbd";
+    public static final int DATABASE_VERSION = 7;
 
     //TABELA ARTISTAS
     public static final String ARTISTA_TABLE_NAME = "TBArtista";
@@ -47,6 +48,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String USER_COLUMN_EMAIL = "EmailUser";
     public static final String USER_COLUMN_PASSWORD = "PasswordUser";
 
+    //TABELA MUSEU
+    public static final String M_TABLE_NAME = "TBmuseu";
+    public static final String M_COLUMN_ID = "IDmuseu";
+    public static final String M_COLUMN_NAME = "NameMuseu";
+    public static final String M_COLUMN_ADDRESS = "AddressMuseu";
+    public static final String M_COLUMN_USER = "UserMuseu";
+
+
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -68,8 +77,16 @@ public class DBHelper extends SQLiteOpenHelper {
                 + " ( " + USER_COLUMN_ID + " INTEGER PRIMARY KEY, " + USER_COLUMN_NAME + "  TEXT, " +
                 USER_COLUMN_EMAIL + " TEXT, " + USER_COLUMN_PASSWORD + " TEXT); ";
 
+        String QUERY_MUS = "CREATE TABLE " + M_TABLE_NAME
+                + " ( " + M_COLUMN_ID + " INTEGER PRIMARY KEY, " + M_COLUMN_NAME + "  TEXT, " +
+                M_COLUMN_ADDRESS + " TEXT, " +
+                M_COLUMN_USER + " INTEGER, " +
+                " foreign key (" + M_COLUMN_USER +" ) references " + USER_TABLE_NAME + "(" + USER_COLUMN_ID + ")); ";
+
         db.execSQL(QUERY_ARTISTA);
         db.execSQL(QUERY_EXPO);
+        db.execSQL(QUERY_CLI);
+        db.execSQL(QUERY_MUS);
 
     }
 
@@ -77,18 +94,33 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + ARTISTA_TABLE_NAME + ";");
         db.execSQL("DROP TABLE IF EXISTS " + EXPO_TABLE_NAME + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE_NAME + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + M_TABLE_NAME + ";");
+
         onCreate(db);
     }
 
-    public void addUser(UserClass user) {
+    public void addMuseu(MuseuClass m) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
-        values.put(USER_COLUMN_ID, user.getIdUser());
-        values.put(USER_COLUMN_NAME, user.getNameUser());
-        values.put(USER_COLUMN_EMAIL, user.getEmailUser());
-        values.put(USER_COLUMN_PASSWORD, user.getPasswordUser());
+        values.put(M_COLUMN_NAME, m.getNameM());
+        values.put(M_COLUMN_ADDRESS, m.getAddressM());
+        values.put(M_COLUMN_USER, m.getUserM());
+
+        db.insert(M_TABLE_NAME, null, values);
+        db.close();
+    }
+
+    public void addUser(UserClass userClass) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(USER_COLUMN_NAME, userClass.getName());
+        values.put(USER_COLUMN_EMAIL, userClass.getEmail());
+        values.put(USER_COLUMN_PASSWORD, userClass.getPassword());
 
         db.insert(USER_TABLE_NAME, null, values);
         db.close();
@@ -189,14 +221,27 @@ public class DBHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public  boolean ValidacaoEmail(String string){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT ? FROM TBuser WHERE EmailUser =?", new String[]{string,string});
+        if(c.getCount()>0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     public boolean autenticaUsuario(UserClass usuario){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql_busca_usuario =
-                "SELECT * FROM " + USER_TABLE_NAME + " WHERE " + USER_COLUMN_EMAIL + " = " + "'" + usuario.getEmailUser() + "'";
+                "SELECT * FROM " + USER_TABLE_NAME + " WHERE " + USER_COLUMN_EMAIL + " = " + "'" + usuario.getEmail() + "'";
         Cursor c = db.rawQuery(sql_busca_usuario, null);
         while(c.moveToNext()){
-            if(usuario.getEmailUser().equals(c.getString(c.getColumnIndex(USER_COLUMN_EMAIL)))){
-                if(usuario.getPasswordUser().equals(c.getString(c.getColumnIndex(USER_COLUMN_PASSWORD)))){
+            String email = c.getString(c.getColumnIndex(USER_COLUMN_EMAIL));
+            String password = c.getString(c.getColumnIndex(USER_COLUMN_PASSWORD));
+            if(usuario.getEmail().equals(email)){
+
+                if(usuario.getPassword().equals(password)){
                     return true;
                 }
 
@@ -209,25 +254,25 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //Busca id do usuário pelo email
-    /*
-    public int pegaCodUser(String nome) {
+    public String pegaCodUser(String email) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(USUARIO_TABLE_NAME, new String[]{USUARIO_COLUMN_ID},
-                USUARIO_COLUMN_NAME + " = ?" ,
-                new String[] {String.valueOf(nome)}, null, null, null, null);
+        String Busca_Id =
+                "SELECT " + USER_COLUMN_ID + " FROM " + USER_TABLE_NAME + " WHERE " + USER_COLUMN_EMAIL + " = " + "'" + email + "'";
+        Cursor cursor = db.rawQuery(Busca_Id, null);
 
         if(cursor != null){
             cursor.moveToFirst();
         }
 
-        int cod = cursor.getInt(0);
+        String cod = cursor.getString(0);
 
         cursor.close();
 
         return cod;
 
-    }*/
+    }
+
 }
 

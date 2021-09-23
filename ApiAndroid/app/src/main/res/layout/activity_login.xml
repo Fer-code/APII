@@ -34,7 +34,7 @@
 
 
             <com.example.api.CustomView
-                android:id="@+id/idNomeUsuario"
+                android:id="@+id/idEmailUsuario"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -70,7 +70,7 @@
                 android:layout_marginTop="40dp"
                 android:background="@drawable/botao_borda"
                 android:hint="@string/confirmar"
-                android:onClick="GoMain"
+                android:onClick="Conf"
                 android:textColorHint="@android:color/white"
                 android:textSize="24sp"
                 app:backgroundTint="@color/light_blue_600" />

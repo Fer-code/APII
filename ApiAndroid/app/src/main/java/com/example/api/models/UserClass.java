@@ -1,50 +1,57 @@
 package com.example.api.models;
 
 public class UserClass {
-    public int idUser;
-    public String nameUser;
-    public String emailUser;
-    public String passwordUser;
 
-    public UserClass(){}
+        // string variables for our name and job
+        public int ID;
+    public String name;
+    public String email;
+    public String password;
 
+        public UserClass(){}
 
-    public UserClass(int idUser, String nameUser, String emailUser, String passwordUser) {
-        this.idUser = idUser;
-        this.nameUser = nameUser;
-        this.emailUser = emailUser;
-        this.passwordUser = passwordUser;
+    public UserClass(int _Id, String _name, String _email, String _password) {
+            this.ID = _Id;
+        this.name = _name;
+        this.email = _email;
+        this.password = _password;
     }
 
-    public int getIdUser() {
-        return idUser;
-    }
+        public UserClass(String _name, String _email, String _password) {
+            this.name = _name;
+            this.email = _email;
+            this.password = _password;
+        }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
+        public int getID() {
+            return ID;
+        }
 
-    public String getNameUser() {
-        return nameUser;
-    }
+        public void setID(int ID) {
+            this.ID = ID;
+        }
 
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public String getEmailUser() {
-        return emailUser;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public void setEmailUser(String emailUser) {
-        this.emailUser = emailUser;
-    }
+        public String getEmail() {
+            return email;
+        }
 
-    public String getPasswordUser() {
-        return passwordUser;
-    }
+        public void setEmail(String email) {
+            this.email = email;
+        }
 
-    public void setPasswordUser(String passwordUser) {
-        this.passwordUser = passwordUser;
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
     }
-}
