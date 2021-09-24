@@ -33,6 +33,21 @@ namespace APIMuseum.Controllers.V1
             return museum;
         }
 
+
+        [HttpGet]
+        [ActionName("getMuByIdUser")]
+        public IEnumerable GetByIdUser(int id_User)
+        {
+            var museum = museumRequestsAPI.MgetMuseumByIdUser(id_User);
+            if (museum == null)
+            {
+                var callback = new HttpResponseMessage(HttpStatusCode.NotFound);
+                throw new System.Web.Http.HttpResponseException(callback);
+            }
+            return museum;
+        }
+
+
         [HttpGet]
         [ActionName("getAllMuseums")]
         public IEnumerable getAllMuseums()

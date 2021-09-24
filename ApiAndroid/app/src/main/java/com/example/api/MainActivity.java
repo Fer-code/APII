@@ -23,15 +23,8 @@ import static android.hardware.Sensor.TYPE_LIGHT;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
-        public static final String SHARED_PREFS = "shared_prefs";
-
-        public static final String COD_KEY = "cod_key";
-
     SensorManager sensorManager;
     Sensor sensor;
-    SharedPreferences sharedpreferences;
-
-    String cods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +36,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensor=sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
 
-        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-
-        String cod = sharedpreferences.getString(COD_KEY, null);
-        Toast.makeText(this, cod, Toast.LENGTH_LONG).show();
     }
 
     @Override

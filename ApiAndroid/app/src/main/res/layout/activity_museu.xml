@@ -1,44 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="#000415"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent"
+    tools:context=".Museu">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400px"
         android:gravity="center"
-        android:background="@drawable/museus">
+        android:background="@drawable/museus"
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/Museu"
         android:gravity="center"
+        android:layout_marginTop="50dp"
         android:textSize="50sp"
         android:fontFamily="sans-serif-black"
         android:textColorHint="?android:attr/colorPressedHighlight"/>
 
+
     </LinearLayout>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:onClick="CadM"
-        app:backgroundTint="?android:attr/colorPressedHighlight"
-        tools:ignore="OnClick" />
+        android:layout_marginTop="80px"
+        android:orientation="vertical">
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <TextView
+            android:id="@+id/MuseusUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
 
 
-</LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:onClick="CadM"
+            android:src="@drawable/symbolmuseum"
+            app:backgroundTint="?android:attr/colorPressedHighlight"
+            tools:ignore="OnClick,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

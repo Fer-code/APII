@@ -1,9 +1,11 @@
 package com.example.api.models;
 
 import com.example.api.Museu;
+import com.google.gson.annotations.SerializedName;
 
 public class MuseuClass {
     public int idM;
+
     public String nameM;
     public String addressM;
     public int userM;

@@ -145,7 +145,7 @@ public class CadMuseu extends AppCompatActivity implements
                     //-------------banco
                     db.addMuseu(new MuseuClass(edtName.getText().toString(), txtResultado.getText().toString(), codBancoApi));
                     Toast.makeText(CadMuseu.this, "adicionado com sucesso", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CadMuseu.this, Museu.class);
+                    Intent intent = new Intent(CadMuseu.this, MainActivity.class);
                     startActivity(intent);
                     finish();
 
@@ -157,7 +157,7 @@ public class CadMuseu extends AppCompatActivity implements
         private void postMuseu(String name, String address, int user) {
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://192.168.0.6:23114/api/V1/")
+                    .baseUrl("https://192.168.0.6:1078/api/V1/")
                     .client(getUnsafeOkHttpClient().build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();

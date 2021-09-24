@@ -5,9 +5,10 @@
       <map>
         <entry key="..\:/Workspaces/APII/ApiAndroid/app/src/main/res/layout/activity_cad_museu.xml" value="0.75" />
         <entry key="..\:/Workspaces/APII/ApiAndroid/app/src/main/res/layout/activity_cad_usuario.xml" value="0.18" />
+        <entry key="..\:/Workspaces/APII/ApiAndroid/app/src/main/res/layout/activity_listar_artista.xml" value="0.19384057971014493" />
         <entry key="..\:/Workspaces/APII/ApiAndroid/app/src/main/res/layout/activity_listar_exposicao.xml" value="0.20199275362318841" />
         <entry key="..\:/Workspaces/APII/ApiAndroid/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
-        <entry key="..\:/Workspaces/APII/ApiAndroid/app/src/main/res/layout/activity_museu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Workspaces/APII/ApiAndroid/app/src/main/res/layout/activity_museu.xml" value="0.1" />
       </map>
     </option>
   </component>

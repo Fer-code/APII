@@ -18,6 +18,16 @@ namespace APIMuseum.Connection
 
 
 
+        public List<Museum> MgetMuseumByIdUser(int id_User)
+        {
+            MySqlCommand command = new MySqlCommand($"select * from tbVisitedMuseum where user_museum = {id_User}", connection.ConectarBD());
+            var ReturnMuseum = command.ExecuteReader();
+            return MgetMuseum(ReturnMuseum);
+
+           
+        }
+
+
         public List<Museum> MgetMuseum()
         {
             MySqlCommand command = new MySqlCommand("select * from tbVisitedMuseum", connection.ConectarBD());

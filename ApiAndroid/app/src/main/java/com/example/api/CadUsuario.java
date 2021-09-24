@@ -118,48 +118,29 @@ public class CadUsuario extends AppCompatActivity {
     private void postUser(String name, String email, String senha) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://192.168.0.6:23114/api/V1/")
+                .baseUrl("https://192.168.0.6:1078/api/V1/")
                 .client(getUnsafeOkHttpClient().build())
-
-                // as we are sending data in json format so
-                // we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
-                // at last we are building our retrofit builder.
                 .build();
-        // below line is to create an instance for our retrofit api class.
         UserInterface retrofitAPI = retrofit.create(UserInterface.class);
-
-        // passing data from our text fields to our modal class.
         UserClass modal = new UserClass(name, email, senha);
 
-        // calling a method to create a post and passing our modal class.
         Call<UserClass> call = retrofitAPI.createPost(modal);
 
-        // on below line we are executing our method.
         call.enqueue(new Callback<UserClass>() {
             @Override
             public void onResponse(Call<UserClass> call, Response<UserClass> response) {
-                // this method is called when we get response from our api.
+
                 Toast.makeText(CadUsuario.this, "Data added to API", Toast.LENGTH_SHORT).show();
-
-                // below line is for hiding our prog
-
-                // on below line we are setting empty text
-                // to our both edit text.
 
                 emailEdt.setText("");
                 nameEdt.setText("");
-
-                // we are getting response from our body
-                // and passing it to our modal class.
                 UserClass responseFromAPI = response.body();
 
-                // on below line we are getting our data from modal class and adding it to our string.
+
                 String responseString = " id: " + "name : " + responseFromAPI.getName() + "\n" + "email : " + responseFromAPI.getEmail() +
                         "\n" + "password : " + responseFromAPI.getPassword();
 
-                // below line we are setting our
-                // string to our text view.
                 Toast.makeText(CadUsuario.this, responseString, Toast.LENGTH_LONG).show();
             }
 
